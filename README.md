@@ -120,7 +120,7 @@ hrms/
 ## 1. Clone Repository
 
 bash
-git clone <git clone https://github.com/madhureddy7716/hrms.git>
+git clone git clone https://github.com/madhureddy7716/hrms.git
 cd hrms
 ```
 
