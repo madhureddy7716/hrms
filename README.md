@@ -1,0 +1,391 @@
+# HRMS – Human Resource Management System
+
+## Overview
+
+HRMS (Human Resource Management System) is a full-stack web application built using Django and Django REST Framework. The system helps organizations manage employees, leave requests, company assets, and HR operations through a centralized dashboard.
+
+The project includes Employee Portal, HR Portal, REST APIs, Asset Management, Leave Management, Authentication System, and Dashboard Analytics.
+
+
+
+# Features
+
+## Authentication & Security
+
+* Employee Login
+* HR Login
+* User Registration
+* Logout Functionality
+* Change Password
+* Session Authentication
+* Protected Routes
+
+## Employee Management
+
+* Add Employee
+* Update Employee Details
+* Delete Employee
+* Employee Profile Management
+* Employee Dashboard
+* Upload Employee Photo
+* Search Employees
+
+## Leave Management
+
+* Apply Leave
+* Leave History
+* Leave Status Tracking
+* HR Leave Approval
+* HR Leave Rejection
+* Leave Dashboard Statistics
+
+## Asset Management
+
+* Add Asset
+* Update Asset
+* Delete Asset
+* Assign Asset to Employee
+* Return Asset
+* Asset History Tracking
+* Asset Search Functionality
+
+## HR Dashboard
+
+* Total Employees Count
+* Pending Leave Requests
+* Approved Leaves Count
+* Rejected Leaves Count
+* Total Assets Count
+* Assigned Assets Count
+* Available Assets Count
+* Returned Assets Count
+
+## REST API Module
+
+* Authentication APIs
+* Employee CRUD APIs
+* Leave CRUD APIs
+* Asset CRUD APIs
+* Dashboard Statistics API
+* Search APIs
+
+
+
+# Technologies Used
+
+* Python 3
+* Django 5
+* Django REST Framework
+* SQLite Database
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
+* Pillow
+* Postman
+* Git & GitHub
+
+
+
+# Project Structure
+
+
+hrms/
+│
+├── accounts/
+│
+├── employees/
+│
+├── leaves/
+│
+├── assets/
+│
+├── hr_portal/
+│
+├── templates/
+│
+├── static/
+│
+├── media/
+│
+├── manage.py
+│
+├── requirements.txt
+│
+└── README.md
+
+
+# Installation Guide
+
+## 1. Clone Repository
+
+bash
+git clone <your-github-repository-url>
+cd hrms
+```
+
+## 2. Create Virtual Environment
+
+bash
+python -m venv venv
+
+
+## 3. Activate Virtual Environment
+
+### Windows
+
+bash
+venv\Scripts\activate
+
+
+### Linux / Mac
+
+bash
+source venv/bin/activate
+
+
+## 4. Install Requirements
+
+bash
+pip install -r requirements.txt
+
+
+## 5. Apply Database Migrations
+
+bash
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+## 6. Create Superuser
+
+bash
+
+python manage.py createsuperuser
+
+
+## 7. Run Development Server
+
+bash
+
+python manage.py runserver
+
+
+Server URL:
+
+
+http://127.0.0.1:8000/
+
+
+
+
+# Project URLs
+
+## Home Page
+
+text
+http://127.0.0.1:8000/
+
+
+## Employee Dashboard
+
+text
+http://127.0.0.1:8000/dashboard/
+
+
+## Employee Profile
+
+text
+http://127.0.0.1:8000/profile/
+
+
+## Apply Leave
+
+text
+http://127.0.0.1:8000/apply-leave/
+
+
+## Leave History
+
+text
+http://127.0.0.1:8000/leave-history/
+
+
+## Asset Management
+
+text
+http://127.0.0.1:8000/assets/
+
+
+## HR Dashboard
+
+```text
+http://127.0.0.1:8000/hr/dashboard/
+
+
+## Django Admin
+
+text
+http://127.0.0.1:8000/admin/
+
+
+# API Documentation
+
+Base URL
+
+text
+http://127.0.0.1:8000/api/
+
+
+## Authentication APIs
+
+text
+POST   /api/register/
+POST   /api/login/
+POST   /api/logout/
+
+
+## Employee APIs
+
+text
+GET    /api/employees/
+GET    /api/employees/<id>/
+
+POST   /api/employees/
+
+PUT    /api/employees/<id>/
+
+DELETE /api/employees/<id>/
+```
+
+## Leave APIs
+
+ text
+GET    /api/leaves/
+GET    /api/leaves/<id>/
+
+POST   /api/leaves/
+
+PUT    /api/leaves/<id>/
+
+DELETE /api/leaves/<id>/
+
+PUT    /api/leaves/<id>/approve/
+
+PUT    /api/leaves/<id>/reject/
+
+
+## Asset APIs
+
+text
+GET    /api/assets/
+GET    /api/assets/<id>/
+
+POST   /api/assets/
+
+PUT    /api/assets/<id>/
+
+DELETE /api/assets/<id>/
+
+POST   /api/assets/<id>/return/
+
+GET    /api/assets/history/
+
+
+## Dashboard API
+
+text
+GET /api/dashboard/
+
+
+# Sample API Requests
+
+## Register User
+
+json
+{
+  "username": "pranavi",
+  "email": "pranavi@gmail.com",
+  "password": "123456"
+}
+
+
+## Create Employee
+
+json
+{
+  "emp_id": "EMP001",
+  "name": "pranavi",
+  "email": "pranavi@gmail.com",
+  "phone": "9876543210",
+  "department": "IT",
+  "designation": "Python Developer",
+  "salary": "50000"
+}
+```
+
+## Apply Leave
+
+json
+{
+  "employee_name": "pranavi",
+  "leave_type": "Sick Leave",
+  "from_date": "2026-06-15",
+  "to_date": "2026-06-16",
+  "reason": "Fever",
+  "status": "Pending"
+}
+
+
+
+# Requirements
+
+text
+Django==5.2.15
+djangorestframework==3.17.1
+Pillow==12.2.0
+
+
+Install manually:
+
+bash
+pip install django
+pip install djangorestframework
+pip install pillow
+
+
+# Future Enhancements
+
+* JWT Authentication
+* Email Notifications
+* Attendance Management
+* Payroll Management
+* Salary Management
+* Employee Performance Tracking
+* Export Reports to PDF/Excel
+* Swagger API Documentation
+* Role-Based Access Control
+* Multi-Department Support
+* Notification System
+
+
+# Testing
+
+* Django Admin
+* Django REST Framework Browsable API
+* Postman API Testing
+* CRUD Operations Testing
+
+
+# Author
+
+**Madhu Dakkata**
+
+Python Full Stack Developer
+
+
+
+# License
+
+This project is developed for educational, learning, and portfolio purposes
