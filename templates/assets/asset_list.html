@@ -1,0 +1,253 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+<title>Asset Management</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script src="{% static 'js/theme.js' %}"></script>
+
+
+</head>
+
+<body class="bg-dark text-white">
+
+<div class="container mt-4">
+
+
+<div class="d-flex justify-content-between mb-3">
+
+    <h2>
+        <i class="fas fa-laptop"></i>
+        Asset Management
+    </h2>
+
+    <button
+        onclick="toggleTheme()"
+        class="btn btn-warning">
+
+        🌙 Theme
+
+    </button>
+
+</div>
+
+<div class="card shadow-lg">
+
+    <div class="card-header bg-primary text-white">
+
+        <h3>
+            Asset List
+        </h3>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="mb-3">
+
+            <a href="/hr/dashboard/"
+               class="btn btn-secondary">
+
+                HR Dashboard
+
+            </a>
+
+            <a href="{% url 'asset_add' %}"
+               class="btn btn-success">
+
+                Add Asset
+
+            </a>
+
+            <a href="{% url 'asset_history' %}"
+               class="btn btn-primary">
+
+                Asset History
+
+            </a>
+
+        </div>
+
+        <input
+            type="text"
+            id="searchInput"
+            class="form-control mb-3"
+            placeholder="Search Assets...">
+
+        <table
+            class="table table-bordered table-hover"
+            id="assetTable">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Asset ID</th>
+                    <th>Asset Name</th>
+                    <th>Asset Type</th>
+                    <th>Assigned Employee</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for asset in assets %}
+
+                <tr>
+
+                    <td>{{ asset.asset_id }}</td>
+
+                    <td>{{ asset.asset_name }}</td>
+
+                    <td>{{ asset.asset_type }}</td>
+
+                    <td>
+
+                        {% if asset.employee %}
+
+                            {{ asset.employee }}
+
+                        {% else %}
+
+                            <span class="text-danger">
+                                Not Assigned
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if asset.status == 'Assigned' %}
+
+                            <span class="badge bg-success">
+                                Assigned
+                            </span>
+
+                        {% elif asset.status == 'Available' %}
+
+                            <span class="badge bg-primary">
+                                Available
+                            </span>
+
+                        {% elif asset.status == 'Returned' %}
+
+                            <span class="badge bg-warning text-dark">
+                                Returned
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-danger">
+                                Inactive
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'asset_update' asset.id %}"
+                           class="btn btn-warning btn-sm">
+
+                            Edit
+
+                        </a>
+
+                        <a href="{% url 'asset_return' asset.id %}"
+                           class="btn btn-info btn-sm">
+
+                            Return
+
+                        </a>
+
+                        <a href="{% url 'asset_delete' asset.id %}"
+                           class="btn btn-danger btn-sm">
+
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="6"
+                        class="text-center">
+
+                        No Assets Found
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "keyup",
+    function(){
+
+        let filter =
+        this.value.toLowerCase();
+
+        let rows =
+        document.querySelectorAll(
+            "#assetTable tbody tr"
+        );
+
+        rows.forEach(
+            function(row){
+
+                let text =
+                row.innerText.toLowerCase();
+
+                row.style.display =
+                text.includes(filter)
+                ? ""
+                : "none";
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>

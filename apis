@@ -1,0 +1,265 @@
+# HRMS API Documentation
+
+Base URL
+
+http://127.0.0.1:8000/api/
+
+---
+
+## Authentication APIs
+
+### Register User
+
+POST
+
+http://127.0.0.1:8000/api/register/
+
+```json
+{
+    "username": "madhu",
+    "email": "madhu@gmail.com",
+    "password": "123456"
+}
+```
+
+### Login User
+
+POST
+
+http://127.0.0.1:8000/api/login/
+
+```json
+{
+    "username": "madhu",
+    "password": "123456"
+}
+```
+
+### Logout User
+
+POST
+
+http://127.0.0.1:8000/api/logout/
+
+````
+
+---
+
+## Employee APIs
+
+### Get All Employees
+
+GET
+
+http://127.0.0.1:8000/api/employees/
+
+### Get Single Employee
+
+GET
+
+http://127.0.0.1:8000/api/employees/1/
+
+### Create Employee
+
+POST
+
+http://127.0.0.1:8000/api/employees/
+
+```json
+{
+    "emp_id": "EMP001",
+    "name": "Madhu",
+    "email": "madhu@gmail.com",
+    "phone": "9876543210",
+    "department": "IT",
+    "designation": "Python Developer",
+    "salary": "50000"
+}
+````
+
+### Update Employee
+
+PUT
+
+http://127.0.0.1:8000/api/employees/1/
+
+### Delete Employee
+
+DELETE
+
+http://127.0.0.1:8000/api/employees/1/
+
+---
+
+## Leave APIs
+
+### Get All Leaves
+
+GET
+
+http://127.0.0.1:8000/api/leaves/
+
+### Get Single Leave
+
+GET
+
+http://127.0.0.1:8000/api/leaves/1/
+
+### Apply Leave
+
+POST
+
+http://127.0.0.1:8000/api/leaves/
+
+```json
+{
+    "employee_name": "Madhu",
+    "leave_type": "Sick Leave",
+    "from_date": "2026-06-15",
+    "to_date": "2026-06-16",
+    "reason": "Fever",
+    "status": "Pending"
+}
+```
+
+### Update Leave
+
+PUT
+
+http://127.0.0.1:8000/api/leaves/1/
+
+### Delete Leave
+
+DELETE
+
+http://127.0.0.1:8000/api/leaves/1/
+
+### Approve Leave
+
+PUT
+
+http://127.0.0.1:8000/api/leaves/1/approve/
+
+### Reject Leave
+
+PUT
+
+http://127.0.0.1:8000/api/leaves/1/reject/
+
+---
+
+## Asset APIs
+
+### Get All Assets
+
+GET
+
+http://127.0.0.1:8000/api/assets/
+
+### Get Single Asset
+
+GET
+
+http://127.0.0.1:8000/api/assets/1/
+
+### Create Asset
+
+POST
+
+http://127.0.0.1:8000/api/assets/
+
+```json
+{
+    "asset_id": "LAP001",
+    "asset_name": "Dell Laptop",
+    "asset_type": "Laptop",
+    "status": "Available"
+}
+```
+
+### Update Asset
+
+PUT
+
+http://127.0.0.1:8000/api/assets/1/
+
+### Delete Asset
+
+DELETE
+
+http://127.0.0.1:8000/api/assets/1/
+
+### Return Asset
+
+POST
+
+http://127.0.0.1:8000/api/assets/1/return/
+
+### Asset History
+
+GET
+
+http://127.0.0.1:8000/api/assets/history/
+
+---
+
+## Dashboard API
+
+### Dashboard Statistics
+
+GET
+
+http://127.0.0.1:8000/api/dashboard/
+
+Example Response
+
+```json
+{
+    "total_employees": 1,
+    "pending_leaves": 0,
+    "approved_leaves": 0,
+    "rejected_leaves": 0,
+    "total_assets": 0,
+    "assigned_assets": 0,
+    "available_assets": 0,
+    "returned_assets": 0
+}
+```
+
+---
+
+## Search APIs
+
+### Employee Search
+
+GET
+
+http://127.0.0.1:8000/api/employees/?search=madhu
+
+### Leave Search
+
+GET
+
+http://127.0.0.1:8000/api/leaves/?search=sick
+
+### Asset Search
+
+GET
+
+http://127.0.0.1:8000/api/assets/?search=laptop
+
+---
+
+## Total APIs
+
+Authentication APIs : 3
+
+Employee APIs : 5
+
+Leave APIs : 7
+
+Asset APIs : 7
+
+Dashboard API : 1
+
+Total APIs : 23

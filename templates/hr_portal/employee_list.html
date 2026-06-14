@@ -1,0 +1,80 @@
+{% extends 'hr_portal/base_hr.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h1 class="mb-4">
+        Employee List
+    </h1>
+
+    <a href="{% url 'employee_add' %}"
+       class="btn btn-success mb-3">
+        Add Employee
+    </a>
+
+    <table class="table table-bordered table-striped">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for employee in employees %}
+
+            <tr>
+
+                <td>{{ employee.emp_id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.salary }}</td>
+
+                <td>
+
+                    <a href="{% url 'employee_update' employee.id %}"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'employee_delete' employee.id %}"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="7"
+                    class="text-center">
+                    No Employees Found
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

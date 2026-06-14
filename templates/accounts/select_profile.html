@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Profile</title>
+
+    <script>
+        if(localStorage.getItem("theme")==="dark"){
+            document.documentElement.classList.add("dark-mode");
+        }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html,
+        body{
+            min-height:100vh;
+        }
+
+        body{
+            background:#f4f6f9;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            transition:all .3s ease;
+        }
+
+        .profile-container{
+            width:100%;
+            max-width:950px;
+            padding:20px;
+        }
+
+        .main-card{
+            border:none;
+            border-radius:25px;
+            overflow:hidden;
+            box-shadow:0 15px 40px rgba(0,0,0,.15);
+        }
+
+        .header{
+            background:#1d2b44;
+            color:white;
+            padding:30px;
+            text-align:center;
+        }
+
+        .header h1{
+            margin:0;
+            font-size:55px;
+            font-weight:700;
+        }
+
+        .header p{
+            margin-top:8px;
+            font-size:18px;
+        }
+
+        .profile-card{
+            text-decoration:none;
+        }
+
+        .circle-box{
+
+            width:220px;
+            height:220px;
+
+            border-radius:50%;
+
+            display:flex;
+            flex-direction:column;
+
+            justify-content:center;
+            align-items:center;
+
+            margin:auto;
+
+            transition:.4s;
+            cursor:pointer;
+        }
+
+        .circle-box:hover{
+
+            transform:translateY(-10px) scale(1.05);
+
+            box-shadow:0 10px 25px rgba(
+                0,
+                0,
+                0,
+                .25
+            );
+        }
+
+        .employee{
+            background:#2563eb;
+            color:white;
+        }
+
+        .hr{
+            background:#16a34a;
+            color:white;
+        }
+
+        .circle-box i{
+            font-size:75px;
+            margin-bottom:15px;
+        }
+
+        .circle-box h3{
+            margin:0;
+            font-weight:bold;
+        }
+
+        .toggle-btn{
+
+            position:fixed;
+
+            top:20px;
+            right:20px;
+
+            z-index:9999;
+        }
+
+        /* DARK MODE */
+
+        html.dark-mode body{
+            background:#0f172a;
+            color:white;
+        }
+
+        html.dark-mode .main-card{
+            background:#1e293b;
+            color:white;
+        }
+
+        html.dark-mode .header{
+            background:#111827;
+        }
+
+        html.dark-mode .toggle-btn{
+            background:#374151;
+            border:none;
+        }
+
+        @media(max-width:768px){
+
+            .header h1{
+                font-size:40px;
+            }
+
+            .circle-box{
+                width:180px;
+                height:180px;
+            }
+
+            .circle-box i{
+                font-size:60px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<button
+    class="btn btn-dark toggle-btn"
+    onclick="toggleTheme()">
+
+    🌙 Toggle Theme
+
+</button>
+
+<div class="profile-container">
+
+    <div class="card main-card">
+
+        <div class="header">
+
+            <h1>Select Profile</h1>
+
+            <p>
+                Choose Your Portal
+            </p>
+
+        </div>
+
+        <div class="card-body p-5">
+
+            <div class="row text-center">
+
+                <!-- Employee -->
+
+                <div class="col-md-6 mb-4">
+
+                    <a href="{% url 'login' %}"
+                       class="profile-card">
+
+                        <div class="circle-box employee">
+
+                            <i class="fas fa-user"></i>
+
+                            <h3>Employee</h3>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+                <!-- HR -->
+
+                <div class="col-md-6 mb-4">
+
+                    <a href="{% url 'hr_login' %}"
+                       class="profile-card">
+
+                        <div class="circle-box hr">
+
+                            <i class="fas fa-user-tie"></i>
+
+                            <h3>HR</h3>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function toggleTheme(){
+
+    document.documentElement.classList.toggle(
+        "dark-mode"
+    );
+
+    if(
+        document.documentElement.classList.contains(
+            "dark-mode"
+        )
+    ){
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+    }
+    else{
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+body{
+    transition:0.3s;
+}
+
+.dark-mode{
+    background:#0f172a !important;
+    color:white !important;
+}
+
+.dark-mode .sidebar{
+    background:#111827 !important;
+}
+
+.dark-mode .content{
+    background:#0f172a !important;
+    color:white !important;
+}
+
+.dark-mode .card{
+    background:#1e293b !important;
+    color:white !important;
+}
+
+.dark-mode table{
+    color:white !important;
+}
+
+.dark-mode th,
+.dark-mode td{
+    background:#1e293b !important;
+    color:white !important;
+}
+
+.theme-btn{
+    position:fixed;
+    top:15px;
+    right:20px;
+    z-index:9999;
+}
